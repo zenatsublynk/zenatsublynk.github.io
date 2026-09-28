@@ -254,7 +254,7 @@
   <!-- NAVBAR -->
   <nav class="sticky top-0 z-50 py-2.5 px-4 transition-all duration-300" :class="scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'">
     <div class="max-w-6xl mx-auto px-5 sm:px-6 py-2.5 flex justify-between items-center rounded-2xl transition-all duration-300" :class="scrolled ? 'bg-white border border-sublynk-border/50 shadow-sm' : 'bg-white/90 backdrop-blur-md border border-sublynk-border'">
-      <a href="#" @click.prevent="goHome" class="flex items-center group">
+      <a href="#" @click.prevent="goHome" class="flex items-center group" target="_blank" rel="noopener">
         <img src="https://app.sublynk.com/assets/logo-color-DS8Xvtsx.png" alt="Sublynk" class="h-7" />
       </a>
 
@@ -262,43 +262,43 @@
       <div class="hidden md:flex items-center gap-7">
         <div class="relative solutions-trigger">
           <a href="#" class="text-sm font-medium text-gray-500 hover:text-sublynk-navy transition flex items-center gap-1"
-             :class="['subs','contractors','networks','property','franchisors','franchisees'].includes(currentPage) ? 'text-sublynk-orange' : ''">
+             :class="['subs','contractors','networks','property','franchisors','franchisees'].includes(currentPage) ? 'text-sublynk-orange' : ''" target="_blank" rel="noopener">
             Solutions
             <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
           </a>
           <div class="solutions-dropdown">
             <div class="solutions-dropdown-inner">
-              <a href="#" @click.prevent="showPage('subs')" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-sublynk-cream transition">
+              <a href="#" @click.prevent="showPage('subs')" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-sublynk-cream transition" target="_blank" rel="noopener">
                 <div class="w-9 h-9 rounded-lg bg-sublynk-orange/10 flex items-center justify-center flex-shrink-0">
                   <svg class="w-5 h-5 text-sublynk-orange" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2z"/><path d="m4 15 2-6.5a6 6 0 0 1 12 0L20 15"/></svg>
                 </div>
                 <div><span class="block text-sm font-semibold text-sublynk-navy">Subcontractors</span><span class="block text-xs text-gray-400">Get on networks, win jobs</span></div>
               </a>
-              <a href="#" @click.prevent="showPage('contractors')" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-sublynk-cream transition">
+              <a href="#" @click.prevent="showPage('contractors')" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-sublynk-cream transition" target="_blank" rel="noopener">
                 <div class="w-9 h-9 rounded-lg bg-sublynk-blue/10 flex items-center justify-center flex-shrink-0">
                   <svg class="w-5 h-5 text-sublynk-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
                 </div>
                 <div><span class="block text-sm font-semibold text-sublynk-navy">Contractors</span><span class="block text-xs text-gray-400">One profile, every network</span></div>
               </a>
-              <a href="#" @click.prevent="showPage('networks')" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-sublynk-cream transition">
+              <a href="#" @click.prevent="showPage('networks')" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-sublynk-cream transition" target="_blank" rel="noopener">
                 <div class="w-9 h-9 rounded-lg bg-sublynk-navy/10 flex items-center justify-center flex-shrink-0">
                   <svg class="w-5 h-5 text-sublynk-navy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/></svg>
                 </div>
                 <div><span class="block text-sm font-semibold text-sublynk-navy">Networks & GCs</span><span class="block text-xs text-gray-400">Credential subs in days</span></div>
               </a>
-              <a href="#" @click.prevent="showPage('property')" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-sublynk-cream transition">
+              <a href="#" @click.prevent="showPage('property')" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-sublynk-cream transition" target="_blank" rel="noopener">
                 <div class="w-9 h-9 rounded-lg bg-sublynk-green/10 flex items-center justify-center flex-shrink-0">
                   <svg class="w-5 h-5 text-sublynk-green" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
                 </div>
                 <div><span class="block text-sm font-semibold text-sublynk-navy">Property Managers</span><span class="block text-xs text-gray-400">Vet every contractor you hire</span></div>
               </a>
-              <a href="#" @click.prevent="showPage('franchisors')" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-sublynk-cream transition">
+              <a href="#" @click.prevent="showPage('franchisors')" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-sublynk-cream transition" target="_blank" rel="noopener">
                 <div class="w-9 h-9 rounded-lg bg-purple-500/10 flex items-center justify-center flex-shrink-0">
                   <svg class="w-5 h-5 text-purple-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
                 </div>
                 <div><span class="block text-sm font-semibold text-sublynk-navy">Franchisors</span><span class="block text-xs text-gray-400">Brand-wide compliance</span></div>
               </a>
-              <a href="#" @click.prevent="showPage('franchisees')" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-sublynk-cream transition">
+              <a href="#" @click.prevent="showPage('franchisees')" class="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-sublynk-cream transition" target="_blank" rel="noopener">
                 <div class="w-9 h-9 rounded-lg bg-sublynk-yellow/20 flex items-center justify-center flex-shrink-0">
                   <svg class="w-5 h-5 text-yellow-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
                 </div>
@@ -308,18 +308,18 @@
           </div>
         </div>
         <a href="#" @click.prevent="showPage('howitworks')" class="text-sm font-medium transition"
-           :class="currentPage==='howitworks' ? 'text-sublynk-orange' : 'text-gray-500 hover:text-sublynk-navy'">How It Works</a>
+           :class="currentPage==='howitworks' ? 'text-sublynk-orange' : 'text-gray-500 hover:text-sublynk-navy'" target="_blank" rel="noopener">How It Works</a>
         <a href="#" @click.prevent="showPage('pricing')" class="text-sm font-medium transition"
-           :class="currentPage==='pricing' ? 'text-sublynk-orange' : 'text-gray-500 hover:text-sublynk-navy'">Pricing</a>
+           :class="currentPage==='pricing' ? 'text-sublynk-orange' : 'text-gray-500 hover:text-sublynk-navy'" target="_blank" rel="noopener">Pricing</a>
         <a href="#" @click.prevent="showPage('compare')" class="text-sm font-medium transition"
-           :class="currentPage==='compare' ? 'text-sublynk-orange' : 'text-gray-500 hover:text-sublynk-navy'">Compare</a>
+           :class="currentPage==='compare' ? 'text-sublynk-orange' : 'text-gray-500 hover:text-sublynk-navy'" target="_blank" rel="noopener">Compare</a>
         <a href="#" @click.prevent="showPage('about')" class="text-sm font-medium transition"
-           :class="currentPage==='about' ? 'text-sublynk-orange' : 'text-gray-500 hover:text-sublynk-navy'">About</a>
+           :class="currentPage==='about' ? 'text-sublynk-orange' : 'text-gray-500 hover:text-sublynk-navy'" target="_blank" rel="noopener">About</a>
       </div>
 
       <div class="flex items-center gap-3">
-        <a href="app/login.html" class="hidden sm:inline text-sm font-medium text-gray-500 hover:text-sublynk-navy transition">Sign in</a>
-        <a href="https://app.sublynk.com/" class="bg-sublynk-orange hover:bg-sublynk-orange-hover text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition shadow-sm">
+        <a href="app/login.html" class="hidden sm:inline text-sm font-medium text-gray-500 hover:text-sublynk-navy transition" target="_blank" rel="noopener">Sign in</a>
+        <a href="https://app.sublynk.com/" class="bg-sublynk-orange hover:bg-sublynk-orange-hover text-white px-5 py-2.5 rounded-xl text-sm font-semibold transition shadow-sm" target="_blank" rel="noopener">
           Join now
         </a>
       </div>
@@ -333,18 +333,18 @@
     <!-- Mobile menu -->
     <div v-if="mobileMenu" class="md:hidden border-t border-sublynk-border bg-white px-5 py-4 space-y-2">
       <p class="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Solutions</p>
-      <a href="#" @click.prevent="showPage('subs'); mobileMenu=false" class="block py-2 text-base font-medium text-gray-700">Subcontractors</a>
-      <a href="#" @click.prevent="showPage('contractors'); mobileMenu=false" class="block py-2 text-base font-medium text-gray-700">Contractors</a>
-      <a href="#" @click.prevent="showPage('networks'); mobileMenu=false" class="block py-2 text-base font-medium text-gray-700">Networks & GCs</a>
-      <a href="#" @click.prevent="showPage('property'); mobileMenu=false" class="block py-2 text-base font-medium text-gray-700">Property Managers</a>
-      <a href="#" @click.prevent="showPage('franchisors'); mobileMenu=false" class="block py-2 text-base font-medium text-gray-700">Franchisors</a>
-      <a href="#" @click.prevent="showPage('franchisees'); mobileMenu=false" class="block py-2 text-base font-medium text-gray-700">Franchisees</a>
+      <a href="#" @click.prevent="showPage('subs'); mobileMenu=false" class="block py-2 text-base font-medium text-gray-700" target="_blank" rel="noopener">Subcontractors</a>
+      <a href="#" @click.prevent="showPage('contractors'); mobileMenu=false" class="block py-2 text-base font-medium text-gray-700" target="_blank" rel="noopener">Contractors</a>
+      <a href="#" @click.prevent="showPage('networks'); mobileMenu=false" class="block py-2 text-base font-medium text-gray-700" target="_blank" rel="noopener">Networks & GCs</a>
+      <a href="#" @click.prevent="showPage('property'); mobileMenu=false" class="block py-2 text-base font-medium text-gray-700" target="_blank" rel="noopener">Property Managers</a>
+      <a href="#" @click.prevent="showPage('franchisors'); mobileMenu=false" class="block py-2 text-base font-medium text-gray-700" target="_blank" rel="noopener">Franchisors</a>
+      <a href="#" @click.prevent="showPage('franchisees'); mobileMenu=false" class="block py-2 text-base font-medium text-gray-700" target="_blank" rel="noopener">Franchisees</a>
       <div class="border-t border-sublynk-border pt-2 mt-2">
-        <a href="#" @click.prevent="showPage('howitworks'); mobileMenu=false" class="block py-2 text-base font-medium text-gray-700">How It Works</a>
-        <a href="#" @click.prevent="showPage('pricing'); mobileMenu=false" class="block py-2 text-base font-medium text-gray-700">Pricing</a>
-        <a href="#" @click.prevent="showPage('compare'); mobileMenu=false" class="block py-2 text-base font-medium text-gray-700">Compare</a>
-        <a href="#" @click.prevent="showPage('faq'); mobileMenu=false" class="block py-2 text-base font-medium text-gray-700">FAQ</a>
-        <a href="#" @click.prevent="showPage('about'); mobileMenu=false" class="block py-2 text-base font-medium text-gray-700">About</a>
+        <a href="#" @click.prevent="showPage('howitworks'); mobileMenu=false" class="block py-2 text-base font-medium text-gray-700" target="_blank" rel="noopener">How It Works</a>
+        <a href="#" @click.prevent="showPage('pricing'); mobileMenu=false" class="block py-2 text-base font-medium text-gray-700" target="_blank" rel="noopener">Pricing</a>
+        <a href="#" @click.prevent="showPage('compare'); mobileMenu=false" class="block py-2 text-base font-medium text-gray-700" target="_blank" rel="noopener">Compare</a>
+        <a href="#" @click.prevent="showPage('faq'); mobileMenu=false" class="block py-2 text-base font-medium text-gray-700" target="_blank" rel="noopener">FAQ</a>
+        <a href="#" @click.prevent="showPage('about'); mobileMenu=false" class="block py-2 text-base font-medium text-gray-700" target="_blank" rel="noopener">About</a>
       </div>
     </div>
   </nav>
@@ -373,14 +373,14 @@
 
           <!-- Top-fold CTAs -->
           <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8">
-            <a href="grow/" class="w-full sm:w-auto bg-sublynk-orange hover:bg-sublynk-orange-hover text-white px-8 py-3.5 rounded-xl font-semibold transition shadow-sm inline-flex items-center justify-center gap-2">
+            <a href="grow/" class="w-full sm:w-auto bg-sublynk-orange hover:bg-sublynk-orange-hover text-white px-8 py-3.5 rounded-xl font-semibold transition shadow-sm inline-flex items-center justify-center gap-2" target="_blank" rel="noopener">
               Get Started
               <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
-            <a href="https://app.sublynk.com/contractors" class="w-full sm:w-auto bg-white border-2 border-sublynk-border hover:border-sublynk-orange text-sublynk-navy px-8 py-3.5 rounded-xl font-semibold transition">
+            <a href="https://app.sublynk.com/contractors" class="w-full sm:w-auto bg-white border-2 border-sublynk-border hover:border-sublynk-orange text-sublynk-navy px-8 py-3.5 rounded-xl font-semibold transition" target="_blank" rel="noopener">
               Find contractors
             </a>
-            <a href="trust-loop.html" class="w-full sm:w-auto bg-white border-2 border-sublynk-border hover:border-sublynk-orange text-sublynk-navy px-8 py-3.5 rounded-xl font-semibold transition">
+            <a href="trust-loop.html" class="w-full sm:w-auto bg-white border-2 border-sublynk-border hover:border-sublynk-orange text-sublynk-navy px-8 py-3.5 rounded-xl font-semibold transition" target="_blank" rel="noopener">
               Learn more
             </a>
           </div>
@@ -1308,7 +1308,7 @@
         </div>
       </div>
       <div class="text-center py-12">
-        <a href="grow/" class="inline-block bg-sublynk-orange hover:bg-sublynk-orange-hover text-white px-8 py-4 rounded-xl text-lg font-semibold transition shadow-lg">Get started with Sublynk</a>
+        <a href="grow/" class="inline-block bg-sublynk-orange hover:bg-sublynk-orange-hover text-white px-8 py-4 rounded-xl text-lg font-semibold transition shadow-lg" target="_blank" rel="noopener">Get started with Sublynk</a>
       </div>
 
       <!-- Deep-dive competitor links -->
@@ -1340,7 +1340,7 @@
         <h1 class="text-4xl md:text-5xl font-extrabold text-sublynk-navy animate-fade-up">3 steps. Under 5 minutes. You're in.</h1>
         <p class="text-gray-500 text-lg mt-4 max-w-2xl mx-auto animate-fade-up delay-100">No paperwork. No waiting. Create your verified profile on your phone between jobs.</p>
         <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4 animate-fade-up delay-100">
-          <a href="grow/" class="bg-sublynk-orange hover:bg-sublynk-orange-hover text-white px-8 py-3.5 rounded-xl text-lg font-semibold shadow-lg transition inline-flex items-center gap-2">
+          <a href="grow/" class="bg-sublynk-orange hover:bg-sublynk-orange-hover text-white px-8 py-3.5 rounded-xl text-lg font-semibold shadow-lg transition inline-flex items-center gap-2" target="_blank" rel="noopener">
             Get Started
             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -2149,7 +2149,7 @@
 
           <!-- Breadcrumb -->
           <nav class="flex items-center gap-2 text-sm text-gray-400 mb-8">
-            <a href="#" @click.prevent="showPage('home')" class="hover:text-sublynk-orange transition">Home</a>
+            <a href="#" @click.prevent="showPage('home')" class="hover:text-sublynk-orange transition" target="_blank" rel="noopener">Home</a>
             <span>/</span>
             <span class="text-sublynk-navy font-medium">{{ howtoData[currentPage]?.title }}</span>
           </nav>
@@ -2227,9 +2227,9 @@
 
           <!-- Breadcrumb for SEO structure -->
           <nav class="flex items-center gap-2 text-sm text-gray-400 mb-8">
-            <a href="#" @click.prevent="showPage('home')" class="hover:text-sublynk-orange transition">Home</a>
+            <a href="#" @click.prevent="showPage('home')" class="hover:text-sublynk-orange transition" target="_blank" rel="noopener">Home</a>
             <span>/</span>
-            <a href="#" @click.prevent="showPage('networks')" class="hover:text-sublynk-orange transition">Network</a>
+            <a href="#" @click.prevent="showPage('networks')" class="hover:text-sublynk-orange transition" target="_blank" rel="noopener">Network</a>
             <span>/</span>
             <span class="text-sublynk-navy font-medium">{{ networkData[currentPage]?.name }}</span>
           </nav>
@@ -2501,41 +2501,41 @@
         <div>
           <h4 class="font-semibold text-white mb-4 text-sm">Solutions</h4>
           <div class="space-y-2.5 text-sm text-gray-400">
-            <a href="#" @click.prevent="showPage('subs')" class="block hover:text-sublynk-orange transition">Subcontractors</a>
-            <a href="#" @click.prevent="showPage('contractors')" class="block hover:text-sublynk-orange transition">Contractors</a>
-            <a href="#" @click.prevent="showPage('networks')" class="block hover:text-sublynk-orange transition">Networks & GCs</a>
-            <a href="#" @click.prevent="showPage('property')" class="block hover:text-sublynk-orange transition">Property Managers</a>
-            <a href="#" @click.prevent="showPage('franchisors')" class="block hover:text-sublynk-orange transition">Franchisors</a>
-            <a href="#" @click.prevent="showPage('franchisees')" class="block hover:text-sublynk-orange transition">Franchisees</a>
+            <a href="#" @click.prevent="showPage('subs')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Subcontractors</a>
+            <a href="#" @click.prevent="showPage('contractors')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Contractors</a>
+            <a href="#" @click.prevent="showPage('networks')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Networks & GCs</a>
+            <a href="#" @click.prevent="showPage('property')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Property Managers</a>
+            <a href="#" @click.prevent="showPage('franchisors')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Franchisors</a>
+            <a href="#" @click.prevent="showPage('franchisees')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Franchisees</a>
           </div>
         </div>
         <!-- Network -->
         <div>
           <h4 class="font-semibold text-white mb-4 text-sm">Network</h4>
           <div class="space-y-2.5 text-sm text-gray-400">
-            <a href="#" @click.prevent="showPage('net-core')" class="block hover:text-sublynk-orange transition">CORE</a>
-            <a href="#" @click.prevent="showPage('net-sedgwick')" class="block hover:text-sublynk-orange transition">Sedgwick</a>
-            <a href="#" @click.prevent="showPage('net-accuserve')" class="block hover:text-sublynk-orange transition">AccuServe</a>
-            <a href="#" @click.prevent="showPage('net-dki')" class="block hover:text-sublynk-orange transition">DKI Services</a>
-            <a href="#" @click.prevent="showPage('net-altimeter')" class="block hover:text-sublynk-orange transition">Altimeter Solutions</a>
-            <a href="#" @click.prevent="showPage('net-rytech')" class="block hover:text-sublynk-orange transition">Rytech Franchise</a>
-            <a href="#" @click.prevent="showPage('net-ati')" class="block hover:text-sublynk-orange transition">ATI Restoration</a>
-            <a href="#" @click.prevent="showPage('net-mangrove')" class="block hover:text-sublynk-orange transition">Mangrove</a>
-            <a href="#" @click.prevent="showPage('net-timber')" class="block hover:text-sublynk-orange transition">Timber Warriors</a>
+            <a href="#" @click.prevent="showPage('net-core')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">CORE</a>
+            <a href="#" @click.prevent="showPage('net-sedgwick')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Sedgwick</a>
+            <a href="#" @click.prevent="showPage('net-accuserve')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">AccuServe</a>
+            <a href="#" @click.prevent="showPage('net-dki')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">DKI Services</a>
+            <a href="#" @click.prevent="showPage('net-altimeter')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Altimeter Solutions</a>
+            <a href="#" @click.prevent="showPage('net-rytech')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Rytech Franchise</a>
+            <a href="#" @click.prevent="showPage('net-ati')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">ATI Restoration</a>
+            <a href="#" @click.prevent="showPage('net-mangrove')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Mangrove</a>
+            <a href="#" @click.prevent="showPage('net-timber')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Timber Warriors</a>
           </div>
         </div>
         <!-- Resources (sorted short to long) -->
         <div>
           <h4 class="font-semibold text-white mb-4 text-sm">Resources</h4>
           <div class="space-y-2.5 text-sm text-gray-400">
-            <a href="#" @click.prevent="showPage('pricing')" class="block hover:text-sublynk-orange transition">Pricing</a>
-            <a href="#" @click.prevent="showPage('faq')" class="block hover:text-sublynk-orange transition">FAQ</a>
-            <a href="#" @click.prevent="showPage('howitworks')" class="block hover:text-sublynk-orange transition">How It Works</a>
-            <a href="demo/" class="block hover:text-sublynk-orange transition">Demo</a>
-            <a href="#" class="block hover:text-sublynk-orange transition">Blog</a>
+            <a href="#" @click.prevent="showPage('pricing')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Pricing</a>
+            <a href="#" @click.prevent="showPage('faq')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">FAQ</a>
+            <a href="#" @click.prevent="showPage('howitworks')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">How It Works</a>
+            <a href="demo/" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Demo</a>
+            <a href="#" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Blog</a>
             <a href="https://help.sublynk.com/article/27-how-to-contact-sublynk-support" target="_blank" class="block hover:text-sublynk-orange transition">Support</a>
             <a href="https://help.sublynk.com" target="_blank" class="block hover:text-sublynk-orange transition">Helpdesk</a>
-            <a href="prevent/" class="block hover:text-sublynk-orange transition">2026 Fraud &amp; Risk Report</a>
+            <a href="prevent/" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">2026 Fraud &amp; Risk Report</a>
 
 
 
@@ -2546,32 +2546,32 @@
         <div>
           <h4 class="font-semibold text-white mb-4 text-sm">How To</h4>
           <div class="space-y-2.5 text-sm text-gray-400">
-            <a href="#" @click.prevent="showPage('howto-insurance')" class="block hover:text-sublynk-orange transition">Add Insurance</a>
-            <a href="#" @click.prevent="showPage('howto-credentials')" class="block hover:text-sublynk-orange transition">Manage Credentials</a>
-            <a href="#" @click.prevent="showPage('howto-bgc')" class="block hover:text-sublynk-orange transition">Background Checks</a>
-            <a href="#" @click.prevent="showPage('howto-join')" class="block hover:text-sublynk-orange transition">Join a Network</a>
-            <a href="#" @click.prevent="showPage('howto-personnel')" class="block hover:text-sublynk-orange transition">Manage Personnel</a>
-            <a href="#" @click.prevent="showPage('howto-locations')" class="block hover:text-sublynk-orange transition">Manage Locations</a>
-            <a href="#" @click.prevent="showPage('howto-compliance')" class="block hover:text-sublynk-orange transition">Compliance Status</a>
+            <a href="#" @click.prevent="showPage('howto-insurance')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Add Insurance</a>
+            <a href="#" @click.prevent="showPage('howto-credentials')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Manage Credentials</a>
+            <a href="#" @click.prevent="showPage('howto-bgc')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Background Checks</a>
+            <a href="#" @click.prevent="showPage('howto-join')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Join a Network</a>
+            <a href="#" @click.prevent="showPage('howto-personnel')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Manage Personnel</a>
+            <a href="#" @click.prevent="showPage('howto-locations')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Manage Locations</a>
+            <a href="#" @click.prevent="showPage('howto-compliance')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Compliance Status</a>
           </div>
         </div>
         <!-- Compare -->
         <div>
           <h4 class="font-semibold text-white mb-4 text-sm">Free Tools</h4>
           <div class="space-y-2.5 text-sm text-gray-400">
-            <a href="email-signature.html" class="block hover:text-sublynk-orange transition">Email Signature</a>
-            <a href="elite-share-kit.html" class="block hover:text-sublynk-orange transition">Elite share kit</a>
-            <a href="/win" class="block hover:text-sublynk-orange transition">Win more jobs</a>
-            <a href="sublynkvsprofilegorilla.html" class="block hover:text-sublynk-orange transition">PG</a>
+            <a href="email-signature.html" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Email Signature</a>
+            <a href="elite-share-kit.html" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Elite share kit</a>
+            <a href="/win" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Win more jobs</a>
+            <a href="sublynkvsprofilegorilla.html" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">PG</a>
           </div>
         </div>
         <div>
           <h4 class="font-semibold text-white mb-4 text-sm">Compare</h4>
           <div class="space-y-2.5 text-sm text-gray-400">
-            <a href="#" @click.prevent="showPage('compare')" class="block hover:text-sublynk-orange transition">Why Sublynk</a>
-            <a href="#" @click.prevent="showPage('vs-vf')" class="block hover:text-sublynk-orange transition">vs Veriforce</a>
-            <a href="#" @click.prevent="showPage('vs-ss')" class="block hover:text-sublynk-orange transition">vs Spreadsheets</a>
-            <a href="#" @click.prevent="showPage('vs-pg')" class="block hover:text-sublynk-orange transition">vs Profile Gorilla</a>
+            <a href="#" @click.prevent="showPage('compare')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Why Sublynk</a>
+            <a href="#" @click.prevent="showPage('vs-vf')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">vs Veriforce</a>
+            <a href="#" @click.prevent="showPage('vs-ss')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">vs Spreadsheets</a>
+            <a href="#" @click.prevent="showPage('vs-pg')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">vs Profile Gorilla</a>
             
           </div>
         </div>
@@ -2579,17 +2579,17 @@
         <div>
           <h4 class="font-semibold text-white mb-4 text-sm">Company</h4>
           <div class="space-y-2.5 text-sm text-gray-400">
-            <a href="why-sublynk.html" class="block hover:text-sublynk-orange transition">Why Sublynk</a>
-            <a href="#" @click.prevent="showPage('about')" class="block hover:text-sublynk-orange transition">About Us</a>
-            <a href="#" @click.prevent="showPage('casestudy')" class="block hover:text-sublynk-orange transition">AccuServe Case Study</a>
-            <a href="mailto:info@sublynk.com" class="block hover:text-sublynk-orange transition">info@sublynk.com</a>
+            <a href="why-sublynk.html" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Why Sublynk</a>
+            <a href="#" @click.prevent="showPage('about')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">About Us</a>
+            <a href="#" @click.prevent="showPage('casestudy')" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">AccuServe Case Study</a>
+            <a href="mailto:info@sublynk.com" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">info@sublynk.com</a>
             
             
             
-            <a href="#" class="block hover:text-sublynk-orange transition">Release Notes</a>
-            <a href="#" class="block hover:text-sublynk-orange transition">Changelog</a>
-            <a href="#" class="block hover:text-sublynk-orange transition">Security</a>
-            <a href="#" class="block hover:text-sublynk-orange transition">Status</a>
+            <a href="#" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Release Notes</a>
+            <a href="#" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Changelog</a>
+            <a href="#" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Security</a>
+            <a href="#" class="block hover:text-sublynk-orange transition" target="_blank" rel="noopener">Status</a>
           </div>
         </div>
       </div>
@@ -2597,7 +2597,7 @@
       <div class="border-t border-white/10 pt-5 flex flex-col md:flex-row items-start gap-3">
         <p class="text-xs text-gray-600">5610 Ward Rd, STE 300, Arvada, CO 80002</p>
         <p class="text-xs text-gray-600">&copy; 2026 Sublynk, Inc. All rights reserved.</p>
-        <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-600 md:ml-auto"><a href="#" class="hover:text-sublynk-orange transition">Privacy Policy</a><a href="https://www.sublynk.com/terms-of-service" target="_blank" class="hover:text-sublynk-orange transition">Terms of Service</a><a href="#" class="hover:text-sublynk-orange transition">Cookie Policy</a></div>
+        <div class="flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-600 md:ml-auto"><a href="#" class="hover:text-sublynk-orange transition" target="_blank" rel="noopener">Privacy Policy</a><a href="https://www.sublynk.com/terms-of-service" target="_blank" class="hover:text-sublynk-orange transition">Terms of Service</a><a href="#" class="hover:text-sublynk-orange transition" target="_blank" rel="noopener">Cookie Policy</a></div>
       </div>
     </div>
   </footer>

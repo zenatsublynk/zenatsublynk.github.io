@@ -64,10 +64,10 @@ a{color:var(--orange);text-decoration:none}a:hover{text-decoration:underline}
 <body>
 <header class=topbar>
   <img class=logo src="../og/sublynk-logo-white.png" alt="Sublynk">
-  <a class="pill link" href="crm.html">CRM</a>
+  <a class="pill link" href="crm.html" target="_blank" rel="noopener">CRM</a>
   <span class="pill active">AI Sourcing</span>
-  <a class="pill link" href="sequencer.html">Sequencer</a>
-  <a class="pill link" href="stats.html">Stats</a>
+  <a class="pill link" href="sequencer.html" target="_blank" rel="noopener">Sequencer</a>
+  <a class="pill link" href="stats.html" target="_blank" rel="noopener">Stats</a>
   <span class=spacer></span>
   <button class=signout id=signout>Sign out</button>
 </header>
@@ -162,7 +162,7 @@ async function openJob(id){
   $('mrows').innerHTML=(d.rows||[]).map(r=>`<tr>
     <td><b>${esc(r.company)}</b></td>
     <td>${esc(r.owner_name)||'<span class=muted>&mdash;</span>'}</td>
-    <td>${r.email?`<a href="mailto:${esc(r.email)}">${esc(r.email)}</a>`:'<span class=muted>&mdash;</span>'}</td>
+    <td>${r.email?`<a href="mailto:${esc(r.email)}" target="_blank" rel="noopener">${esc(r.email)}</a>`:'<span class=muted>&mdash;</span>'}</td>
     <td>${esc(r.phone)||'<span class=muted>&mdash;</span>'}${r.voice_consent?'<span class=consent>consent</span>':''}</td>
     <td>${esc(r.city)||'<span class=muted>&mdash;</span>'}</td><td>${esc(r.state)||''}</td>
     <td>${r.credential_label?`<b>${esc(r.credential_label)}</b>${r.credential_status?`<span class="stat-pill ${/active|certified/i.test(r.credential_status)?'ok':'bad'}">${esc(r.credential_status)}</span>`:''}`:'<span class=muted>&mdash;</span>'}</td>
