@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang=en>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<title>Sublynk Sequencer</title>
+<link rel=icon type="image/svg+xml" href="../og/favicon.svg">
+<link rel=icon type="image/png" href="../og/favicon.png">
+<link rel=preconnect href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel=stylesheet>
+<style>
+:root{--orange:#DD6336;--navy:#0D142A;--panel:#141d33;--panel2:#0f172e;--bd:#24304d;--gray:#8b97a8;--ink:#e8edf4;--green:#43A46D}
+*{box-sizing:border-box;margin:0}
+body{font-family:Inter,-apple-system,'Segoe UI',Arial,sans-serif;background:var(--navy);color:var(--ink);-webkit-font-smoothing:antialiased}
+.topbar{background:#0a1020;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:12px;padding:0 22px;height:58px;position:sticky;top:0;z-index:5}
+.topbar img.logo{height:22px}
+.pill{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer}
+.pill.active{color:var(--orange);border-color:rgba(221,99,54,.4)}
+.pill.link{color:var(--gray)}.pill.link:hover{color:var(--ink)}
+.topbar .spacer{flex:1}
+.signout{background:none;border:1px solid var(--bd);color:var(--gray);font:inherit;font-size:12px;border-radius:8px;padding:6px 11px;cursor:pointer}
+.wrap{max-width:1000px;margin:0 auto;padding:26px 22px 44px}
+h1{font-size:20px;font-weight:800}.sub{color:var(--gray);font-size:13px;margin:3px 0 22px}
+.hero{background:linear-gradient(135deg,#1a2440,#141d33);border:1px solid var(--bd);border-radius:16px;padding:22px 24px;margin-bottom:16px;display:flex;align-items:center;gap:24px}
+.hero .big{font-size:48px;font-weight:800;line-height:1;color:var(--orange);font-variant-numeric:tabular-nums}
+.hero .lbl{font-size:14px;font-weight:600}.hero .hint{color:var(--gray);font-size:13px;margin-top:5px;max-width:440px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.stat{background:var(--panel);border:1px solid var(--bd);border-radius:12px;padding:15px 17px}
+.stat b{font-size:23px;font-weight:800;font-variant-numeric:tabular-nums;display:block}.stat .l{font-size:11px;color:var(--gray);text-transform:uppercase;letter-spacing:.5px;margin-top:3px}
+.panel{background:var(--panel);border:1px solid var(--bd);border-radius:16px;padding:20px 22px;margin-bottom:16px}
+.panel h2{font-size:15px;font-weight:700}.panel .desc{color:var(--gray);font-size:13px;margin:3px 0 4px}
+table{width:100%;border-collapse:collapse;margin-top:12px;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--bd);vertical-align:middle}
+th{color:var(--gray);font-size:11px;text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+tr.duerow td{background:rgba(221,99,54,.06)}
+.tnum{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:7px;background:var(--panel2);border:1px solid var(--bd);font-size:12px;font-weight:700;margin-right:10px}
+.wd{color:var(--gray);font-size:12px}
+.pill2{display:inline-block;padding:3px 11px;border-radius:999px;font-size:12px;font-weight:700;font-variant-numeric:tabular-nums}
+.pill2.due{background:var(--orange);color:#fff}.pill2.zero{background:rgba(139,151,168,.12);color:var(--gray)}
+.bar{height:6px;border-radius:3px;background:var(--panel2);overflow:hidden;margin-top:5px}.bar>i{display:block;height:100%;background:var(--green)}
+code{background:var(--panel2);padding:2px 6px;border-radius:5px;color:var(--orange);font-size:12px}
+.trow{cursor:pointer}
+.trow:hover>td{background:rgba(255,255,255,.035)}
+.caret{display:inline-block;width:10px;font-size:9px;color:var(--gray);transition:transform .15s;margin-right:6px;vertical-align:middle}
+.trow.open .caret{transform:rotate(90deg)}
+.trow.open>td{background:rgba(221,99,54,.06)}
+tr.detail>td{padding:0 0 16px;border-bottom:1px solid var(--bd)}
+.emsub{color:var(--gray);font-size:12px;margin:2px 2px 9px}
+.email{background:#fff;color:#0c0a09;border-radius:10px;padding:20px 22px;max-width:680px;overflow-x:auto}
+.email img{max-width:100%;height:auto}
+</style>
+</head>
+<body>
+<header class=topbar>
+  <img class=logo src="../og/sublynk-logo-white.png" alt="Sublynk">
+  <a class="pill link" href="crm.html">CRM</a>
+  <a class="pill link" href="sourcing.html">AI Sourcing</a>
+  <span class="pill active">Sequencer</span>
+  <a class="pill link" href="stats.html">Stats</a>
+  <span class=spacer></span>
+  <button class=signout id=signout>Sign out</button>
+</header>
+<div class=wrap>
+  <h1>Outbound Sequencer</h1>
+  <div class=sub>Restoration 13-touch cadence &middot; live from Supabase &middot; drafting &amp; sending happen locally via the Chrome extension</div>
+  <div class=hero>
+    <div><div class=big id=h_due>&ndash;</div></div>
+    <div><div class=lbl id=h_duelbl>emails due to send right now</div>
+      <div class=hint>Run a batch in the Sublynk Outreach Drafter extension to clear these. Each send advances that contact to their next touch automatically.</div></div>
+  </div>
+  <div class=cards>
+    <div class=stat><b id=s_enrolled>&ndash;</b><div class=l>Enrolled</div></div>
+    <div class=stat><b id=s_notstarted>&ndash;</b><div class=l>Not started (T1 pending)</div></div>
+    <div class=stat><b id=s_inprogress>&ndash;</b><div class=l>In progress (T2&ndash;T13)</div></div>
+    <div class=stat><b id=s_done>&ndash;</b><div class=l>Completed all 13</div></div>
+  </div>
+  <div class=panel>
+    <h2>Cadence &mdash; Touch 1 through 13</h2>
+    <div class=desc><b>Sent</b> = already received this touch. <b>Queued</b> = waiting for this touch next. <b>Due now</b> = countdown elapsed, ready to send. <b>Click any touch</b> to preview its email.</div>
+    <table><thead><tr><th>Touch</th><th class=num>Sent</th><th class=num>Queued</th><th class=num>Due now</th></tr></thead><tbody id=rows></tbody></table>
+  </div>
+  <div class=panel style="color:var(--gray);font-size:13px">Read-only tracking view. Data lives in Supabase (durable). To draft/send, use the Chrome extension on your machine, which drives Gmail and advances each contact. Refreshes every 15s.</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script>
+const sb = supabase.createClient(window.SUBLYNK.SUPABASE_URL, window.SUBLYNK.SUPABASE_ANON_KEY);
+const $=id=>document.getElementById(id); function n(x){return (x||0).toLocaleString()}
+const esc=s=>(s||'').replace(/</g,'&lt;');
+let bodiesByStep={}; const expanded=new Set(); let built=false;
+
+(async ()=>{
+  const { data } = await sb.auth.getSession();
+  if(!data.session){ location.replace('login.html'); return; }
+  $('signout').onclick=async()=>{ await sb.auth.signOut(); location.replace('login.html'); };
+  // Click a touch row to expand/collapse its email preview. Delegated on the tbody so it
+  // survives the 15s re-render, and expand state is kept in `expanded` across rebuilds.
+  $('rows').addEventListener('click', ev=>{
+    const row=ev.target.closest('tr.trow'); if(!row) return;
+    const step=Number(row.dataset.step);
+    expanded.has(step) ? expanded.delete(step) : expanded.add(step);
+    applyExpanded();
+  });
+  await loadBodies();
+  tick(); setInterval(tick, 15000);
+})();
+
+// Email bodies are static, so fetch them once (not on every tick).
+async function loadBodies(){
+  const { data, error } = await sb.rpc('seq_step_bodies');
+  if(!error && data) data.forEach(r=> bodiesByStep[r.step_no]={subject:r.subject, body:r.body_html});
+}
+
+function applyExpanded(){
+  document.querySelectorAll('tr.trow').forEach(tr=> tr.classList.toggle('open', expanded.has(Number(tr.dataset.step))));
+  document.querySelectorAll('tr.detail').forEach(tr=> tr.style.display = expanded.has(Number(tr.dataset.detail)) ? '' : 'none');
+}
+
+function buildRows(cad, maxSent){
+  $('rows').innerHTML = (cad||[]).map(r=>{
+    const step=r.step_no, b=bodiesByStep[step];
+    const email = b ? b.body : '<div class=wd style="padding:8px 2px">Email preview not loaded yet. Refresh in a moment.</div>';
+    return `<tr class="trow ${Number(r.due)>0?'duerow':''}" data-step="${step}" title="Click to preview the email">
+      <td><span class=caret>&#9654;</span><span class=tnum>${step}</span>${esc(r.subject)}
+          <div class=bar><i style="width:${Math.round(Number(r.sent)/maxSent*100)}%"></i></div>
+          <span class=wd>${step===1?'first touch':'+'+r.wait_days+'d after prior'}</span></td>
+      <td class="num c-sent">${n(r.sent)}</td><td class="num c-queued">${n(r.queued)}</td>
+      <td class=num><span class="pill2 ${Number(r.due)>0?'due':'zero'}">${n(r.due)}</span></td></tr>
+    <tr class=detail data-detail="${step}" style="display:none"><td colspan=4>
+      <div class=emsub>Subject: <b>${esc(r.subject)}</b></div>
+      <div class=email>${email}</div></td></tr>`;
+  }).join('') || '<tr><td colspan=4 class=wd>Nothing enrolled yet</td></tr>';
+  built=true; applyExpanded();
+}
+
+function updateCounts(cad, maxSent){
+  (cad||[]).forEach(r=>{
+    const row=document.querySelector(`tr.trow[data-step="${r.step_no}"]`); if(!row) return;
+    row.classList.toggle('duerow', Number(r.due)>0);
+    const sc=row.querySelector('.c-sent'); if(sc) sc.textContent=n(r.sent);
+    const qc=row.querySelector('.c-queued'); if(qc) qc.textContent=n(r.queued);
+    const bar=row.querySelector('.bar>i'); if(bar) bar.style.width=Math.round(Number(r.sent)/maxSent*100)+'%';
+    const pill=row.querySelector('td:last-child .pill2'); if(pill){ pill.className='pill2 '+(Number(r.due)>0?'due':'zero'); pill.textContent=n(r.due); }
+  });
+}
+
+async function tick(){
+  const [{data:cad,error:e1},{data:sum,error:e2}] = await Promise.all([ sb.rpc('seq_cadence'), sb.rpc('seq_summary') ]);
+  if(e1||e2) return;
+  const totalDue=(cad||[]).reduce((a,r)=>a+Number(r.due),0);
+  const dueEl=$('h_due'); dueEl.textContent=n(totalDue);
+  dueEl.style.color = totalDue>0?'var(--orange)':'var(--green)';
+  $('h_duelbl').textContent = totalDue>0?'emails due to send right now':'all caught up — nothing due right now';
+  const s=(sum&&sum[0])||{}; s_enrolled.textContent=n(s.enrolled); s_notstarted.textContent=n(s.not_started); s_inprogress.textContent=n(s.in_progress); s_done.textContent=n(s.done);
+  const maxSent=Math.max(1,...(cad||[]).map(r=>Number(r.sent)));
+  const needBuild = !built || document.querySelectorAll('tr.trow').length !== (cad||[]).length;
+  needBuild ? buildRows(cad, maxSent) : updateCounts(cad, maxSent);
+}
+</script>
+</body>
+</html>

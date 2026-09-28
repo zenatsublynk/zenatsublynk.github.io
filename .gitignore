@@ -1,0 +1,37 @@
+/outreach/
+/docs/
+/data/
+/venv/
+/cslb_env/
+.DS_Store
+data/primeforge_mailboxes.json
+*.env.local.txt
+sublynk.env.local.txt
+# Never commit data exports / PII to this public (Pages) repo
+*.csv
+roofing_phones_enriched.csv
+outreach/pf_send_counts.json
+outreach/pf_ramp.json
+
+# Deliverable + reference archives (contractor PII: COIs, licenses, workbooks, credentials).
+# This repo publishes path:'.' to GitHub Pages, so these must never be committed/served.
+/Onboarding & Compliance/
+/Email & Journeys/
+/Records/
+/Private/
+/Sublynk Voice AI/
+/Sublynk screenshots/
+/Sublynk OG/
+/One pager/
+/0 START HERE - what goes where.md
+
+# Weekly outbound recaps (contain contractor PII) - never publish to Pages
+reports/
+
+# Internal backend + browser-extension tooling — never publish to the public Pages site
+# (source would be downloadable at joinsublynk.com/... and exposes endpoints + Supabase project ref)
+/scripts/
+/email-scraper-extension/
+/phone-scraper-extension/
+/outreach-extension/
+__pycache__/
