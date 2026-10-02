@@ -2368,10 +2368,11 @@ goToStep = function(n) {
       phone=$('g_phone'), consent=$('g_consent'), submit=$('g_submit'), err=$('g_err');
 
   $('g_consent_text').innerHTML =
-    'I would like to move forward with the <b>Sublynk network setup and evaluation</b> above, and I authorize '
-  + 'Sublynk to collect the <b>one-time $500 setup fee</b> by the method I select above (charge the card on file, '
-  + 'or send an invoice). Full terms come with the receipt or invoice. By checking this box I am agreeing electronically.';
-  $('g_fine').textContent = 'No card details are entered on this page. If you choose card on file, Sublynk charges the card already on record; otherwise we email an invoice.';
+    'I would like to move forward with the <b>Sublynk network setup</b> above. I authorize Sublynk to collect the '
+  + '<b>one-time $500 setup fee</b> by the method I select above (charge the card on file, or send an invoice), and to '
+  + 'begin my <b>$50/month Sublynk subscription</b> on the card Sublynk has on file. I can cancel the subscription anytime. '
+  + 'Full terms come with the receipt or invoice. By checking this box I am agreeing electronically.';
+  $('g_fine').textContent = 'No card details are entered on this page. The one-time $500 is charged to the card on file (or invoiced if you choose), and the $50/month subscription is charged to the card on file. Cancel anytime.';
 
   var emailOK = function(){ return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value.trim()); };
   function refresh(){ submit.disabled = !(fullName.value.trim() && company.value.trim() && emailOK() && consent.checked); }
