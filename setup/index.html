@@ -299,7 +299,7 @@ select { cursor: pointer; appearance: none; background-image: url("data:image/sv
 }
 </style>
 <style id="gate-css">
-/* ---- $500 setup gate: shown first, hidden once onboarding begins ---- */
+/* ---- $500 setup gate: a consent-style walkthrough, hidden once onboarding begins ---- */
 body:not(.intake-active) .progress-wrap,
 body:not(.intake-active) .container:not(#setupGate) { display:none; }
 body.intake-active #setupGate { display:none; }
@@ -307,31 +307,44 @@ body.intake-active #setupGate { display:none; }
 body:not(.intake-active) .call-guide-fab,
 body:not(.intake-active) .call-guide-panel,
 body:not(.intake-active) #programsToggleBtn { display:none !important; }
-#setupGate { position:relative; overflow:hidden; }
-#setupGate .glow{ position:absolute; top:-40px; left:50%; transform:translateX(-50%); width:620px; height:300px; max-width:96%; background:var(--orange); opacity:.07; filter:blur(120px); border-radius:50%; pointer-events:none; z-index:0; }
+
+/* consent design tokens, scoped to the gate */
+#setupGate{ --g-radius-md:18px; --g-shadow:0 8px 30px rgba(13,20,42,.045); position:relative; max-width:640px; padding-top:40px; padding-bottom:72px; }
+#setupGate .glow{ position:absolute; top:-30px; left:50%; transform:translateX(-50%); width:620px; height:280px; max-width:96%; background:var(--orange); opacity:.07; filter:blur(120px); border-radius:50%; pointer-events:none; z-index:0; }
 #setupGate > :not(.glow){ position:relative; z-index:1; }
-#setupGate .eyebrow{ font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--orange); }
-#setupGate h1{ font-size:30px; line-height:1.15; font-weight:800; letter-spacing:-.02em; color:var(--navy); margin:8px 0 10px; text-wrap:balance; }
-#setupGate .sub{ font-size:16px; color:var(--text-muted); max-width:56ch; line-height:1.55; }
-#setupGate .card{ margin-top:22px; }
-#setupGate h2{ font-size:15px; font-weight:800; color:var(--navy); margin-bottom:14px; }
-#setupGate .get{ list-style:none; }
-#setupGate .get li{ position:relative; padding-left:36px; margin:14px 0; font-size:14.5px; color:var(--ink); line-height:1.5; }
-#setupGate .get li .n{ position:absolute; left:0; top:1px; width:24px; height:24px; border-radius:7px; background:var(--navy); color:#fff; font-size:12px; font-weight:800; display:flex; align-items:center; justify-content:center; }
-#setupGate .get b{ color:var(--navy); }
-#setupGate .fee{ margin-top:16px; font-size:13.5px; color:var(--text-muted); background:var(--panel); border-radius:10px; padding:12px 14px; line-height:1.55; }
-#setupGate .fee b{ color:var(--navy); }
-#setupGate .blabel{ display:block; font-size:12.5px; font-weight:600; color:var(--navy); margin:16px 0 6px; }
-#setupGate label.radio{ display:flex; gap:10px; align-items:flex-start; font-size:13.5px; color:var(--ink); background:var(--panel); border:1.5px solid var(--border-light); border-radius:10px; padding:12px 13px; margin-top:8px; cursor:pointer; transition:border-color .15s, box-shadow .15s; }
+#setupGate .kicker{ margin-bottom:12px; color:#b44a22; font-size:12px; font-weight:800; letter-spacing:.11em; text-transform:uppercase; }
+#setupGate h1{ margin:0; color:var(--navy); font-size:clamp(30px,5.2vw,44px); line-height:1.07; letter-spacing:-.035em; font-weight:700; text-wrap:balance; }
+#setupGate .sub{ margin:16px 0 0; color:var(--text-muted); font-size:16px; line-height:1.6; max-width:52ch; }
+#setupGate .price-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+#setupGate .chip{ display:inline-flex; align-items:center; gap:7px; padding:8px 13px; border-radius:999px; background:#fff; border:1px solid var(--border-light); font-size:12.5px; font-weight:700; color:var(--navy); box-shadow:var(--g-shadow); }
+#setupGate .chip b{ color:var(--orange); }
+
+#setupGate .fcard{ margin-top:30px; padding:24px; border:1px solid var(--border-light); border-radius:var(--g-radius-md); background:#fff; box-shadow:var(--g-shadow); }
+#setupGate .fcard-title{ font-size:13px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--text-muted); margin-bottom:16px; }
+#setupGate .getlist{ list-style:none; display:flex; flex-direction:column; gap:18px; }
+#setupGate .getlist li{ display:flex; gap:13px; align-items:flex-start; }
+#setupGate .check{ flex:0 0 auto; width:24px; height:24px; border-radius:50%; display:grid; place-items:center; background:rgba(47,125,84,.12); color:var(--green); font-size:13px; font-weight:900; margin-top:1px; }
+#setupGate .gl-body{ font-size:14.5px; color:var(--ink); line-height:1.5; }
+#setupGate .gl-body b{ color:var(--navy); }
+
+#setupGate .gold{ margin-top:18px; display:flex; gap:13px; align-items:flex-start; padding:18px 20px; border-radius:var(--g-radius-md); background:linear-gradient(180deg,#fff6ef,#fdeee2); border:1px solid #f3d9c7; }
+#setupGate .gold .star{ flex:0 0 auto; width:28px; height:28px; border-radius:50%; display:grid; place-items:center; background:var(--orange); color:#fff; font-size:15px; }
+#setupGate .gold .gtitle{ font-size:13px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--orange); margin-bottom:4px; }
+#setupGate .gold .gbody{ font-size:14.5px; color:var(--ink); line-height:1.5; }
+#setupGate .gold .gbody b{ color:var(--navy); }
+
+#setupGate .field{ margin-bottom:16px; }
+#setupGate .blabel{ display:block; font-size:12.5px; font-weight:700; color:var(--navy); margin:18px 0 6px; }
+#setupGate label.radio{ display:flex; gap:10px; align-items:flex-start; font-size:13.5px; color:var(--ink); background:var(--panel); border:1.5px solid var(--border-light); border-radius:12px; padding:12px 13px; margin-top:8px; cursor:pointer; transition:border-color .15s, box-shadow .15s; }
 #setupGate label.radio input{ margin-top:2px; width:17px; height:17px; accent-color:var(--orange); flex:0 0 auto; cursor:pointer; }
 #setupGate label.radio.sel{ border-color:var(--orange); box-shadow:0 0 0 3px rgba(221,100,56,.12); }
 #setupGate .hp{ position:absolute; left:-9999px; height:0; overflow:hidden; }
 #setupGate .consent{ display:flex; gap:11px; align-items:flex-start; margin-top:20px; background:var(--panel); border:1.5px solid var(--border-light); border-radius:12px; padding:14px 15px; }
 #setupGate .consent input{ margin-top:3px; width:18px; height:18px; accent-color:var(--orange); flex:0 0 auto; cursor:pointer; }
 #setupGate .consent label{ font-size:13px; color:var(--ink); line-height:1.55; }
-#setupGate button.cta{ width:100%; margin-top:18px; font:inherit; font-size:16px; font-weight:700; color:#fff; background:var(--orange); border:0; border-radius:12px; padding:15px; cursor:pointer; transition:.12s; }
-#setupGate button.cta:hover{ background:#c4502a; }
-#setupGate button.cta:disabled{ opacity:.45; cursor:not-allowed; }
+#setupGate button.cta{ width:100%; margin-top:22px; min-height:54px; font:inherit; font-size:16px; font-weight:750; color:#fff; background:var(--orange); border:1px solid var(--orange); border-radius:999px; padding:0 24px; cursor:pointer; transition:transform .16s, background .16s; box-shadow:0 8px 22px rgba(221,99,54,.2); }
+#setupGate button.cta:hover{ background:#b44a22; border-color:#b44a22; transform:translateY(-1px); }
+#setupGate button.cta:disabled{ opacity:.42; cursor:not-allowed; transform:none; box-shadow:none; }
 #setupGate .fine{ font-size:12px; color:var(--text-muted); margin-top:14px; line-height:1.5; }
 #setupGate .err{ color:var(--red); font-size:13px; margin-top:10px; font-weight:600; display:none; }
 </style>
@@ -345,22 +358,42 @@ body:not(.intake-active) #programsToggleBtn { display:none !important; }
 
 <div id="setupGate" class="container">
   <span class="glow" aria-hidden="true"></span>
-  <div class="eyebrow">Network setup</div>
-  <h1>Get your subcontractor network set up on Sublynk</h1>
-  <p class="sub">A focused engagement: we evaluate your contracts and subcontractor requirements, then stand up your network and bench in Sublynk. Confirm below, then complete your onboarding in a few minutes. One-time $500 setup fee.</p>
+  <div class="kicker">Network setup</div>
+  <h1>Build your bench and put subs to work.</h1>
+  <p class="sub">We stand up your network in Sublynk, credential your subs at scale, then connect you to contractors nationwide who already want the work.</p>
 
-  <div class="card">
-    <h2>What you get</h2>
-    <ul class="get">
-      <li><span class="n">1</span><b>Audit.</b> We review your contracts, subcontractor requirements, and current compliance setup.</li>
-      <li><span class="n">2</span><b>Plan.</b> We map the gaps and give you a clear plan to bridge them.</li>
-      <li><span class="n">3</span><b>Grow.</b> We set up your network and subcontractor bench in Sublynk, ready to onboard your subs and go.</li>
-    </ul>
-    <div class="fee"><b>One-time $500 setup fee.</b> By default we charge the card Sublynk already has on file. Prefer an invoice instead? Pick that option below. No card details are entered on this page.</div>
+  <div class="price-row">
+    <span class="chip"><b>$500</b> one-time setup</span>
+    <span class="chip"><b>$50</b>/mo subscription</span>
   </div>
 
-  <div class="card">
-    <h2>Confirm and start onboarding</h2>
+  <div class="fcard">
+    <div class="fcard-title">What you get</div>
+    <ul class="getlist">
+      <li>
+        <span class="check">&#10003;</span>
+        <span class="gl-body"><b>Your rules, enforced.</b> Custom rulesets for COI, background checks, business verification, agreements, and licenses &amp; certs, verified at the state and federal level, never county.</span>
+      </li>
+      <li>
+        <span class="check">&#10003;</span>
+        <span class="gl-body"><b>A bench built to scale.</b> Your one-time $500 puts our engineers on your bench, so subs credential themselves and get verified automatically.</span>
+      </li>
+      <li>
+        <span class="check">&#10003;</span>
+        <span class="gl-body"><b>Recruit nationwide, every trade.</b> Your $50/mo recruits and attracts subs across the country and automates every verification.</span>
+      </li>
+    </ul>
+    <div class="gold">
+      <span class="star">&#9733;</span>
+      <div>
+        <div class="gtitle">The best part</div>
+        <div class="gbody">Connect instantly with <b>opt-in subs who already raised their hand</b>, ready to say yes to assignments and join your network. No cold recruiting.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fcard">
+    <div class="fcard-title">Confirm and start onboarding</div>
     <form id="g_form" autocomplete="on" novalidate>
       <div class="field"><label class="field-label" for="g_full_name">Full name</label><input type="text" id="g_full_name" autocomplete="name"></div>
       <div class="field"><label class="field-label" for="g_company">Company / network name</label><input type="text" id="g_company" autocomplete="organization"></div>
