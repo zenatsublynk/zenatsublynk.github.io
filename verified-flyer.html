@@ -388,10 +388,13 @@
     });
 
     // persistence + prefill
-    function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}
+    var KIT_KEY='sublynk_profile_url';
+    function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}try{if(state.profile)localStorage.setItem(KIT_KEY,state.profile);}catch(e){}}
     function load(){
       try{var s=JSON.parse(localStorage.getItem(KEY)||'null');if(s)Object.assign(state,s);}catch(e){}
+      try{if(!state.profile){var shared=localStorage.getItem(KIT_KEY);if(shared)state.profile=shared;}}catch(e){}
       try{var qp=new URLSearchParams(location.search);['biz','trade','phone','license','web','profile','accent','layout'].forEach(function(k){if(qp.get(k))state[k]=qp.get(k);});
+        if(qp.get('profile')){try{localStorage.setItem(KIT_KEY,qp.get('profile'));}catch(e){}}
         if(qp.get('name'))state.biz=qp.get('name'); if(qp.get('specialty'))state.trade=qp.get('specialty');}catch(e){}
       $('i_biz').value=state.biz;$('i_trade').value=state.trade;$('i_phone').value=state.phone;$('i_license').value=state.license;$('i_web').value=state.web;$('i_profile').value=state.profile;
       ['biz','trade','phone','license','web','profile'].forEach(function(k){var el=$('i_'+k);if(el&&el.value&&!state[k])state[k]=el.value;});
