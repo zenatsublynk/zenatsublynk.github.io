@@ -99,6 +99,17 @@
             <button id="clearPhoto" style="display:none;font-family:Inter,Arial,sans-serif;font-size:13px;font-weight:600;color:#78716c;background:transparent;border:none;cursor:pointer;padding:9px 4px">Remove</button>
           </div>
         </div>
+        <div style="grid-column:1 / -1">
+          <span style="display:block;font-size:12px;font-weight:600;color:#57534e;margin-bottom:6px">Accent color</span>
+          <div id="swatches" style="display:flex;align-items:center;gap:9px;flex-wrap:wrap">
+            <span class="sw on" data-c="#dd6336" title="Sublynk Orange" style="width:26px;height:26px;border-radius:50%;cursor:pointer;background:#dd6336;border:2px solid #fff;box-shadow:0 0 0 2px #0d142a"></span>
+            <span class="sw" data-c="#0d142a" title="Navy" style="width:26px;height:26px;border-radius:50%;cursor:pointer;background:#0d142a;border:2px solid #fff;box-shadow:0 0 0 1px #d6d3d1"></span>
+            <span class="sw" data-c="#008eff" title="Blue" style="width:26px;height:26px;border-radius:50%;cursor:pointer;background:#008eff;border:2px solid #fff;box-shadow:0 0 0 1px #d6d3d1"></span>
+            <span class="sw" data-c="#43a46d" title="Green" style="width:26px;height:26px;border-radius:50%;cursor:pointer;background:#43a46d;border:2px solid #fff;box-shadow:0 0 0 1px #d6d3d1"></span>
+            <span class="sw" data-c="#7c3aed" title="Purple" style="width:26px;height:26px;border-radius:50%;cursor:pointer;background:#7c3aed;border:2px solid #fff;box-shadow:0 0 0 1px #d6d3d1"></span>
+            <label title="Custom color" style="position:relative;width:28px;height:28px;border-radius:50%;overflow:hidden;border:1px dashed #b7b0a4;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:14px;color:#78716c">&#9998;<input type="color" id="i_color" value="#dd6336" style="position:absolute;inset:-6px;width:200%;height:200%;border:0;padding:0;cursor:pointer;opacity:0"></label>
+          </div>
+        </div>
       </div>
       <div style="display:flex;align-items:center;gap:18px;margin-top:20px;padding-top:18px;border-top:1px solid #f5f5f4">
         <button id="toggleCode" style="font-family:Inter,Arial,sans-serif;font-size:13px;font-weight:600;color:#0d142a;background:#f5f5f4;border:1px solid #e7e5e4;border-radius:8px;padding:9px 16px;cursor:pointer">Show HTML code</button>
@@ -406,6 +417,21 @@ document.getElementById("toggleCode").addEventListener("click", function(){
 document.getElementById("copyA").addEventListener("click", function(){ copy("A"); });
 document.getElementById("copyB").addEventListener("click", function(){ copy("B"); });
 document.getElementById("copyC").addEventListener("click", function(){ copy("C"); });
+
+function setAccent(c, fromCustom){
+  ACCENT = c;
+  Array.prototype.forEach.call(document.querySelectorAll(".sw"), function(s){
+    var on = s.getAttribute("data-c") && s.getAttribute("data-c").toLowerCase() === c.toLowerCase();
+    s.classList.toggle("on", on);
+    s.style.boxShadow = on ? "0 0 0 2px #0d142a" : "0 0 0 1px #d6d3d1";
+  });
+  if(!fromCustom) document.getElementById("i_color").value = c;
+  render();
+}
+Array.prototype.forEach.call(document.querySelectorAll(".sw"), function(s){
+  s.addEventListener("click", function(){ setAccent(s.getAttribute("data-c"), false); });
+});
+document.getElementById("i_color").addEventListener("input", function(){ setAccent(this.value, true); });
 
 render();
 </script>
