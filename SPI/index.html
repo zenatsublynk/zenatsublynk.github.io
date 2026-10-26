@@ -213,7 +213,7 @@ function seal(size){
     '<text font-size="9.4" letter-spacing="2.6"><textPath href="#arcB" startOffset="50%" text-anchor="middle">OFFICE OF PREVENTION</textPath></text>'+
     '<circle cx="100" cy="100" r="49" fill="#f4ecdb"/>'+
     '<circle cx="100" cy="100" r="49" fill="none" stroke="var(--gold)" stroke-width="1.5"/>'+
-    '<image href="/og/sublynk-certified-coin.svg" x="56" y="56" width="88" height="88"/>'+
+    '<image href="../og/sublynk-certified-coin.svg" x="56" y="56" width="88" height="88"/>'+
   '</svg>';
 }
 
@@ -373,6 +373,153 @@ var CASES = [
   }),
 ];
 
+/* ---------- Volume II: real public court cases (no redaction; public record) ---------- */
+function publicCase(o){
+  var meta='';
+  o.meta.forEach(function(r){ meta+='<tr><td class="k">'+r[0]+'</td><td>'+r[1]+'</td></tr>'; });
+  var tl='';
+  o.timeline.forEach(function(t){ tl+='<li><span class="d">'+t[0]+'</span><span>'+t[1]+'</span></li>'; });
+  var sects='';
+  (o.sections||[]).forEach(function(s){ sects+='<div class="cf-h">'+s[0]+'</div><p>'+s[1]+'</p>'; });
+  var tone=o.tone||'red';
+  var col = tone==='red' ? 'var(--red)' : (tone==='amber' ? '#8a5a2b' : '#5a5140');
+  var bg  = tone==='red' ? 'rgba(138,43,34,.10)' : (tone==='amber' ? 'rgba(138,90,43,.10)' : 'rgba(90,81,64,.10)');
+  var box='<div class="cf-prev" style="background:'+bg+';border-color:'+col+'">'+
+      '<div class="pv-txt" style="color:#4a4031"><b style="color:'+col+';font-family:var(--type)">OUTCOME &mdash;</b> '+o.outcome+
+        '<span class="pv-basis">Source: '+o.source+'.</span></div>'+
+      '<div class="pv-cost" style="border-left-color:'+bg+'"><span class="pv-lab" style="color:'+col+'">'+o.figlab+'</span>'+
+        '<span class="pv-fig" style="color:'+col+'">'+o.figure+'</span></div></div>';
+  return '<div class="cf">'+
+    '<div class="cf-top"><div class="cf-agency">Sublynk Prevention Intelligence<b>OFFICE OF PREVENTION &middot; PUBLIC RECORD</b></div>'+
+      '<div class="cf-no">'+o.no+'<small>'+o.court+'</small></div></div>'+
+    '<div class="cf-band"><span class="cf-class">'+o.cls+'</span><span class="cf-status" style="color:'+col+'">'+o.status+'</span></div>'+
+    '<table class="cf-meta">'+meta+'</table>'+
+    '<div class="cf-h">What happened</div><p>'+o.allegation+'</p>'+
+    '<div class="cf-h">Timeline &amp; findings</div><ul class="tl">'+tl+'</ul>'+
+    sects+
+    box+
+    '<div class="cf-foot"><span>SUBLYNK PREVENTION INTELLIGENCE &middot; FILE '+o.pg+'</span><span>PUBLIC COURT RECORD</span></div>'+
+    (o.stamps||'')+
+  '</div>';
+}
+
+var DIVIDER2 =
+  '<div class="mid">'+
+    '<div class="k">CASE FILES &middot; VOLUME II</div>'+
+    '<h1>What happens<br>without verification.</h1>'+
+    '<div class="orn">&#10086;</div>'+
+    '<p class="lead">Volume I showed what Sublynk catches. The files that follow are the opposite: real United States court cases where a property manager, landlord, HOA, or rental host let an unvetted worker or vendor into a resident&rsquo;s home, and a crime followed.'+
+    '<br><br>These are public record. Names, courts, verdicts, and citations are preserved exactly as reported. Each file names its source.</p>'+
+    '<div class="note">Thirteen files. Eight are confirmed verdicts or settlements; two are defense verdicts included to show the limits of the law; three are filed suits still pending. Status is stated on every file.</div>'+
+  '</div>';
+
+var PUBLIC = [
+  publicCase({ no:'FILE No. PUB&#8209;2003&#8209;GA', court:'GA CT. APP. 2003', pg:'V2-01', tone:'red',
+    cls:'MAINTENANCE WORKER &middot; FELON WITH KEYS', status:'~$13M VERDICT + PUNITIVE &middot; AFFIRMED',
+    meta:[['Case','TGM Ashley Lakes, Inc. v. Jennings'],['Worker','Apartment maintenance employee (convicted felon)'],['Location','Gwinnett County, Georgia'],['Source','FindLaw / 264 Ga. App. 456']],
+    allegation:'A maintenance worker with a record of rape, armed robbery, and burglaries was given access to every resident&rsquo;s keys. He entered tenant Danielle Jennings&rsquo;s apartment, burglarized it, and strangled her to death.',
+    timeline:[['HIRING','&ldquo;N/A&rdquo; written in the criminal-history field; no background check, no reference letters.'],['ACCESS','Full key access despite a known jailing; key-control policy routinely violated.'],['VERDICT','Jury found negligent hiring/retention; ~$13M plus $2.5M punitive. Affirmed on appeal.']],
+    outcome:'A convicted felon was placed in a role with unit keys and no screening; a resident was murdered.', figlab:'Jury verdict', figure:'~$13M',
+    source:'caselaw.findlaw.com/ga-court-of-appeals/1228044.html',
+    stamps:'<div class="stamp red s1">Liable</div>' }),
+  publicCase({ no:'FILE No. PUB&#8209;1983&#8209;MN', court:'MINN. SUP. CT. 1983', pg:'V2-02', tone:'red',
+    cls:'LANDMARK NEGLIGENT-HIRING CASE', status:'VERDICT FOR TENANT &middot; AFFIRMED',
+    meta:[['Case','Ponticas v. K.M.S. Investments (331 N.W.2d 907)'],['Worker','Resident apartment manager'],['Location','Minnesota (Driftwood Apartments)'],['Source','Casemine / Minn. Sup. Ct.']],
+    allegation:'A resident manager with a concealed criminal history used a passkey to enter a tenant&rsquo;s unit and attack her. The employer ran only a cursory check despite red flags on his application.',
+    timeline:[['HIRING','Cursory background check; substantial criminal history not discovered.'],['ACCESS','Given a passkey to tenant units.'],['RULING','Verdict for the tenant affirmed; set the modern negligent-hiring duty standard.']],
+    outcome:'The case that established an employer&rsquo;s duty to screen before granting access to residents&rsquo; homes.', figlab:'Precedent', figure:'Landmark',
+    source:'casemine.com &middot; Ponticas v. K.M.S. Investments',
+    stamps:'<div class="stamp navy s1">Precedent</div>' }),
+  publicCase({ no:'FILE No. PUB&#8209;2023&#8209;MD', court:'BALTIMORE CITY 2025', pg:'V2-03', tone:'red',
+    cls:'SEX OFFENDER &middot; POSED AS MAINTENANCE', status:'~$21.5M JURY VERDICT &middot; ON APPEAL',
+    meta:[['Case','Hurley &amp; Gilmore v. Eden&rsquo;s Homes / Property Pals'],['Worker','Convicted sex offender doing paid maintenance (Jason Billingsley)'],['Location','Baltimore, Maryland'],['Source','Insurance Journal / Offit Kurman']],
+    allegation:'A convicted sex offender was allowed to live on-site and do paid maintenance with no background check. Posing as maintenance with a fake water-leak story, he raped, tortured, and set fire to two tenants. Days later he murdered tech founder Pava LaPere.',
+    timeline:[['HIRING','Owner met him at a bar, let him live rent-free, paid him for maintenance, no screening.'],['ATTACK','Used a maintenance pretext to get inside and attack April Hurley and Jonte Gilmore.'],['VERDICT','Baltimore jury awarded ~$21.5M (incl. $10M punitive). Defendants signaled appeal.']],
+    outcome:'A convicted sex offender with building access attacked two residents; the manager faced a multimillion-dollar verdict.', figlab:'Jury verdict', figure:'~$21.5M',
+    source:'insurancejournal.com &middot; 2025/12/03/849704',
+    stamps:'<div class="stamp red s1">Liable</div>' }),
+  publicCase({ no:'FILE No. PUB&#8209;2024&#8209;MO', court:'MISSOURI 2024', pg:'V2-04', tone:'red',
+    cls:'MASTER-KEY BREAK-IN &middot; STALKING HISTORY', status:'$14M CONFIDENTIAL SETTLEMENT',
+    meta:[['Case','Confidential (owner &amp; property manager)'],['Worker','Maintenance technician'],['Location','Missouri'],['Source','Missouri Lawyers Media']],
+    allegation:'A maintenance technician used a master key to break into a resident&rsquo;s home. A background check would have revealed a prior restraining order for stalking, threatening, and abusing a woman.',
+    timeline:[['HIRING','Screening that would have surfaced the restraining order was not run or not caught.'],['ACCESS','Master key to resident units.'],['RESOLUTION','Reported $14M confidential settlement against owner and manager.']],
+    outcome:'A tech with a stalking record used a master key to enter a home; a check would have flagged him.', figlab:'Settlement', figure:'$14M',
+    source:'molawyersmedia.com/?p=500960',
+    stamps:'<div class="stamp navy s1">Settled</div>' }),
+  publicCase({ no:'FILE No. PUB&#8209;2005&#8209;AZ', court:'MARICOPA CO. 2005', pg:'V2-05', tone:'red',
+    cls:'SUBCONTRACTED INSTALLER &middot; 16-YR RECORD', status:'INSTALLER CONVICTED &middot; CIVIL SUIT FILED',
+    meta:[['Case','Padilla v. Cox / Allcom (Gallardo)'],['Worker','Subcontracted cable installer'],['Location','Phoenix, Arizona'],['Source','MicroBilt case writeup']],
+    allegation:'A subcontracted cable installer broke into the Padilla home and shot 20-year-old Rudy Padilla Jr. to death. The staffing firm claimed he passed a check but could show no documentation; he had served 16 years for armed robbery and burglary.',
+    timeline:[['VENDOR','Sent into the home as a cable installer by a Cox subcontractor.'],['CRIME','Returned and murdered the homeowner&rsquo;s son.'],['DISPOSITION','Installer convicted (death sentence); negligent-hiring suit filed. Civil outcome unverified.']],
+    outcome:'A subcontracted vendor with a long violent record was sent into a home and committed murder.', figlab:'Civil status', figure:'Suit filed',
+    source:'microbilt.com &middot; cable-company-sued-background-check',
+    stamps:'<div class="stamp red s1">Convicted</div>' }),
+  publicCase({ no:'FILE No. PUB&#8209;2019&#8209;TX', court:'DALLAS CO. 2022', pg:'V2-06', tone:'red',
+    cls:'VENDOR TECHNICIAN &middot; VERIFICATION FAILURE', status:'VERDICT REDUCED TO ~$1.1B &middot; ON APPEAL',
+    meta:[['Case','Thomas v. Charter / Spectrum (Holden)'],['Worker','Cable installer (company technician)'],['Location','Irving, Texas'],['Source','CBS News']],
+    allegation:'A cable installer serviced an 83-year-old customer&rsquo;s home, returned the next day in uniform and a company van, and robbed and murdered her.',
+    timeline:[['SERVICE','Technician sent to the home on a service call.'],['CRIME','Returned the next day and killed the customer.'],['VERDICT','Jury found Charter negligent; punitive award later reduced by the judge to ~$1.1B; Charter appealing.']],
+    outcome:'A vendor technician used legitimate access to return and kill a customer. (Note: his pre-hire check showed no prior record, so this is a failure-to-verify-history case.)', figlab:'Verdict (reduced)', figure:'~$1.1B',
+    source:'cbsnews.com &middot; charter-1-1-billion',
+    stamps:'<div class="stamp red s1">Liable</div>' }),
+  publicCase({ no:'FILE No. PUB&#8209;2010&#8209;NY', court:'S.D.N.Y. 2010', pg:'V2-07', tone:'red',
+    cls:'REGISTERED SEX OFFENDER &middot; ON STAFF', status:'$2M+ CONSENT DECREE',
+    meta:[['Case','United States v. NY landlord (Fair Housing)'],['Worker','Building superintendent (registered sex offender)'],['Location','New York, NY'],['Source','Business Insurance / DOJ']],
+    allegation:'A landlord employed a registered sex offender as building superintendent. He sexually harassed female tenants and withheld repairs and mail over refused sexual demands.',
+    timeline:[['HIRING','Registered-offender status known or knowable; hired with access to units.'],['CONDUCT','Harassed tenants; conditioned repairs on sexual demands.'],['RESOLUTION','Consent decree: more than $2M to tenants plus civil penalties.']],
+    outcome:'A registered sex offender was placed in a role with keys to tenants&rsquo; homes.', figlab:'Consent decree', figure:'$2M+',
+    source:'businessinsurance.com &middot; ny-landlord-sex-offender-2m',
+    stamps:'<div class="stamp navy s1">Settled</div>' }),
+  publicCase({ no:'FILE No. PUB&#8209;2026&#8209;CA', court:'TULARE CO. 2026', pg:'V2-08', tone:'amber',
+    cls:'CONTRACTED CLEANING CREW &middot; BURGLARY', status:'ARRESTED &middot; CHARGES PENDING',
+    meta:[['Case','People v. Tinoco / Popoy (Visalia PD)'],['Worker','Contracted Airbnb cleaning crew'],['Location','Visalia, California'],['Source','City of Visalia PD release']],
+    allegation:'A couple hired as the contracted cleaning service for an Airbnb was determined by detectives to have burglarized the property; stolen items were recovered in a nearby home.',
+    timeline:[['VENDOR','Given property access as the host&rsquo;s cleaning contractor.'],['CRIME','Burglarized the rental they were hired to clean.'],['DISPOSITION','Both arrested March 2026; charges pending.']],
+    outcome:'A contracted cleaning crew with property access burglarized the home they were hired to service.', figlab:'Status', figure:'Pending',
+    source:'visalia.gov &middot; cleaning-contractors-arrested',
+    stamps:'<div class="stamp navy s1" style="color:#8a5a2b">Pending</div>' }),
+  publicCase({ no:'FILE No. PUB&#8209;2021&#8209;FL', court:'ORANGE CO. / FLA. LAW', pg:'V2-09', tone:'amber',
+    cls:'MASTER-KEY MURDER &middot; LED TO MIYA&rsquo;S LAW', status:'SUIT FILED &middot; STATUTE ENACTED',
+    meta:[['Case','Marcano v. Arden Villas / The Preiss Company'],['Worker','Apartment maintenance worker'],['Location','Orlando, Florida'],['Source','ClickOrlando / Miya&rsquo;s Law']],
+    allegation:'A maintenance worker used a master key to enter 19-year-old resident Miya Marcano&rsquo;s apartment and murdered her. The suit alleges the complex did not run criminal background checks and ignored his history of harassing women.',
+    timeline:[['ACCESS','Master key used to enter the resident&rsquo;s unit.'],['CRIME','Resident murdered; worker later found dead.'],['LAW','Prompted Florida&rsquo;s Miya&rsquo;s Law (2022): mandatory employee background checks and master-key tracking. Civil suit pending.']],
+    outcome:'A master-key murder that moved a state to legislate exactly the screening Sublynk provides.', figlab:'Result', figure:'Miya&rsquo;s Law',
+    source:'clickorlando.com &middot; miya-marcano-wrongful-death',
+    stamps:'<div class="stamp red s1">Statute</div>' }),
+  publicCase({ no:'FILE No. PUB&#8209;1999&#8209;VA', court:'VA. SUP. CT. 1999', pg:'V2-10', tone:'grey',
+    cls:'THE LIMITS OF THE LAW &middot; DEFENSE VERDICT', status:'REVERSED &middot; MANAGER NOT LIABLE',
+    meta:[['Case','Southeast Apartments Mgmt v. Jackman'],['Worker','Maintenance supervisor (master key)'],['Location','Virginia'],['Source','LexPlug / Va. Sup. Ct.']],
+    allegation:'A maintenance supervisor used a master key to enter a tenant&rsquo;s unit and make sexual contact. The jury found for the tenant, but the Virginia Supreme Court reversed.',
+    timeline:[['CLAIM','Tenant argued failure to investigate the worker&rsquo;s criminal record.'],['RULING','Court held the evidence insufficient: the file showed no propensity and the worker denied criminal behavior.'],['LESSON','Liability turns on what a reasonable check would have shown. Source-verified screening is what creates that record.']],
+    outcome:'A defense win, included to show the limits: without a documented record of propensity, the manager escaped liability. Verification is what builds that record.', figlab:'Disposition', figure:'Reversed',
+    source:'lexplug.com &middot; southeast-apartments-v-jackman',
+    stamps:'<div class="stamp navy s1" style="color:#5a5140">Defense</div>' }),
+  publicCase({ no:'FILE No. PUB&#8209;2026&#8209;CO', court:'10TH CIR. 2026', pg:'V2-11', tone:'grey',
+    cls:'THE LIMITS OF THE LAW &middot; DEFENSE VERDICT', status:'NO FHA VIOLATION &middot; NOT LIABLE',
+    meta:[['Case','Trujillo v. Amity Plaza, LLC'],['Worker','Maintenance worker (master key)'],['Location','Littleton, Colorado'],['Source','Colorado Springs Gazette']],
+    allegation:'A maintenance worker with a master key allegedly raped a tenant. The resident sued the landlord under the Fair Housing Act.',
+    timeline:[['CLAIM','Vicarious liability argued on the worker&rsquo;s special key access.'],['RULING','10th Circuit found no FHA violation: no evidence he used the master key that day.'],['LESSON','Access alone did not create liability here. The facts, and the records behind them, decide the case.']],
+    outcome:'Another defense win on the facts. The thin line between liability and not is exactly what documented vendor verification protects.', figlab:'Disposition', figure:'Not liable',
+    source:'gazette.com &middot; 10th-circuit-littleton-landlord',
+    stamps:'<div class="stamp navy s1" style="color:#5a5140">Defense</div>' }),
+  publicCase({ no:'FILE No. PUB&#8209;FEAGINS&#8209;FL', court:'FLORIDA &middot; FILED', pg:'V2-12', tone:'amber',
+    cls:'MAINTENANCE WORKER &middot; KEYS &middot; ALLEGED', status:'SUIT FILED &middot; PENDING',
+    meta:[['Case','Feagins v. Area Housing Commission'],['Worker','Maintenance man'],['Location','Pensacola, Florida'],['Source','WEAR-TV']],
+    allegation:'A tenant alleges a maintenance man used his keys to enter her apartment and rape her, and sued the housing commission for negligent hiring.',
+    timeline:[['ACCESS','Worker had keys to the unit.'],['CLAIM','Negligent hiring / failure to screen alleged.'],['STATUS','Suit filed; outcome pending.']],
+    outcome:'A pending negligent-hiring suit over a worker with unit keys. Outcome not yet decided.', figlab:'Status', figure:'Pending',
+    source:'weartv.com &middot; rape-victim-files-lawsuit-housing-commission',
+    stamps:'<div class="stamp navy s1" style="color:#8a5a2b">Pending</div>' }),
+  publicCase({ no:'FILE No. PUB&#8209;YUMA&#8209;AZ', court:'ARIZONA &middot; FILED', pg:'V2-13', tone:'amber',
+    cls:'MAINTENANCE WORKER &middot; ASSAULT &middot; ALLEGED', status:'SUIT FILED &middot; PENDING',
+    meta:[['Case','Apartment assault suit (management company)'],['Worker','Apartment maintenance worker'],['Location','Yuma, Arizona'],['Source','Yuma Sun']],
+    allegation:'A suit alleges a maintenance worker sexually assaulted a resident&rsquo;s 12-year-old daughter in the complex, and that management ignored the father&rsquo;s earlier report about the worker.',
+    timeline:[['REPORT','Father alleges he reported the worker before the assault.'],['CLAIM','Negligent hiring, retention, training, and supervision alleged.'],['STATUS','Lawsuit filed against the management company; outcome pending.']],
+    outcome:'A pending suit alleging management ignored a warning about a worker before an assault.', figlab:'Status', figure:'Pending',
+    source:'yumasun.com &middot; lawsuit-filed-against-apartment',
+    stamps:'<div class="stamp navy s1" style="color:#8a5a2b">Pending</div>' }),
+];
+
 var CLOSING =
   '<div class="mid">'+
     seal(120)+
@@ -398,6 +545,8 @@ var LEAVES = [
   {cls:'', html:INTRO, paper:true, mid:true},
 ];
 CASES.forEach(function(c){ LEAVES.push({cls:'', html:c, paper:true}); });
+LEAVES.push({cls:'', html:DIVIDER2, paper:true, mid:true});
+PUBLIC.forEach(function(c){ LEAVES.push({cls:'', html:c, paper:true}); });
 LEAVES.push({cls:'', html:CLOSING, paper:true, mid:true});
 LEAVES.push({cls:'cover', html:BACK});
 
